@@ -5,9 +5,11 @@
  */
 package restoframes;
 
+
 import dashinternal.accountpage;
 import dashinternal.customerpage;
 import dashinternal.dashboardpage;
+import dashinternal.userpage;
 
 import java.awt.Color;
 import javax.swing.JFrame;
@@ -38,8 +40,10 @@ public class dashboard extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         dashboard = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        report = new javax.swing.JPanel();
+        customer = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        user = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
         header = new javax.swing.JPanel();
         minimize = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -75,7 +79,7 @@ public class dashboard extends javax.swing.JFrame {
         jLabel1.setText("Account");
         account.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 90, 20));
 
-        nav.add(account, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 90, 40));
+        nav.add(account, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 90, 40));
 
         dashboard.setBackground(new java.awt.Color(74, 4, 4));
         dashboard.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240)));
@@ -100,28 +104,51 @@ public class dashboard extends javax.swing.JFrame {
 
         nav.add(dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 90, 40));
 
-        report.setBackground(new java.awt.Color(74, 4, 4));
-        report.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240)));
-        report.addMouseListener(new java.awt.event.MouseAdapter() {
+        customer.setBackground(new java.awt.Color(74, 4, 4));
+        customer.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240)));
+        customer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                reportMouseClicked(evt);
+                customerMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                reportMouseEntered(evt);
+                customerMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                reportMouseExited(evt);
+                customerMouseExited(evt);
             }
         });
-        report.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        customer.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Trebuchet MS", 1, 15)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(240, 240, 240));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Report");
-        report.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 90, 20));
+        jLabel3.setText("Customer");
+        customer.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 90, 20));
 
-        nav.add(report, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 90, 40));
+        nav.add(customer, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 90, 40));
+
+        user.setBackground(new java.awt.Color(74, 4, 4));
+        user.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240)));
+        user.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                userMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                userMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                userMouseExited(evt);
+            }
+        });
+        user.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setFont(new java.awt.Font("Trebuchet MS", 1, 15)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Users");
+        user.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 90, 20));
+
+        nav.add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 90, 40));
 
         getContentPane().add(nav, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 440));
 
@@ -203,13 +230,13 @@ public class dashboard extends javax.swing.JFrame {
         dashboard.setBackground(exit);
     }//GEN-LAST:event_dashboardMouseExited
 
-    private void reportMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportMouseEntered
-        report.setBackground(enter);
-    }//GEN-LAST:event_reportMouseEntered
+    private void customerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customerMouseEntered
+        customer.setBackground(enter);
+    }//GEN-LAST:event_customerMouseEntered
 
-    private void reportMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportMouseExited
-        report.setBackground(exit);
-    }//GEN-LAST:event_reportMouseExited
+    private void customerMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customerMouseExited
+        customer.setBackground(exit);
+    }//GEN-LAST:event_customerMouseExited
 
     private void accountMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accountMouseEntered
         account.setBackground(enter);
@@ -224,10 +251,10 @@ public class dashboard extends javax.swing.JFrame {
         dashboardpane.add(db).setVisible(true);
     }//GEN-LAST:event_dashboardMouseClicked
 
-    private void reportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportMouseClicked
+    private void customerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customerMouseClicked
         customerpage cus = new customerpage();
         dashboardpane.add(cus).setVisible(true);
-    }//GEN-LAST:event_reportMouseClicked
+    }//GEN-LAST:event_customerMouseClicked
 
     private void accountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accountMouseClicked
         accountpage db = new accountpage();
@@ -260,6 +287,19 @@ public class dashboard extends javax.swing.JFrame {
     private void closeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseExited
         close.setBackground(enter);
     }//GEN-LAST:event_closeMouseExited
+
+    private void userMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userMouseClicked
+        userpage up = new userpage();
+        dashboardpane.add(up).setVisible(true);
+    }//GEN-LAST:event_userMouseClicked
+
+    private void userMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userMouseEntered
+        user.setBackground(enter);
+    }//GEN-LAST:event_userMouseEntered
+
+    private void userMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userMouseExited
+        user.setBackground(exit);
+    }//GEN-LAST:event_userMouseExited
 
     /**
      * @param args the command line arguments
@@ -299,6 +339,7 @@ public class dashboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel account;
     private javax.swing.JPanel close;
+    private javax.swing.JPanel customer;
     private javax.swing.JPanel dashboard;
     public javax.swing.JDesktopPane dashboardpane;
     private javax.swing.JPanel header;
@@ -307,8 +348,9 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel minimize;
     private javax.swing.JPanel nav;
-    private javax.swing.JPanel report;
+    private javax.swing.JPanel user;
     // End of variables declaration//GEN-END:variables
 }

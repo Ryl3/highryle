@@ -1,6 +1,7 @@
 package config;
 
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 public class dbconnector {
     
@@ -8,20 +9,20 @@ public class dbconnector {
     
     public dbconnector(){
         try{
-            connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/restrack", "root", "");
+            connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/maindb", "root", "");
             }catch(SQLException e){
                 System.err.println("Cannot connect to database: " + e.getMessage());
             }
         
     }
     
-    public ResultSet getData(String sql) throws SQLException {
+    public ResultSet getdata(String sql) throws SQLException {
         Statement stmt = connection.createStatement();
         ResultSet rst = stmt.executeQuery(sql);
         return rst;
     }
     
-    public int insertData(String sql){
+    public int insertdata(String sql){
         int result;
 //    String sql = "INSERT INTO customers (name, email) VALUES ('John Smith', 'john@example.com')";
             try{
@@ -37,14 +38,14 @@ public class dbconnector {
             return result;
     }
     
-    public void deleteData(int id, String table) {
-    try {
+    public void deletedata(int id, String table, String table_id) {
+       try {
        
-        PreparedStatement ps = connection.prepareStatement("DELETE FROM tbl_customer WHERE cus_id = ?");
+        PreparedStatement ps = connection.prepareStatement("DELETE FROM "+table+" WHERE "+table_id+" = ?");
         ps.setInt(1, id);
         int rowsDeleted = ps.executeUpdate();
         if (rowsDeleted > 0) {
-            System.out.println(rowsDeleted + " rows were deleted.");
+            JOptionPane.showMessageDialog(null, "Successfully Deleted!");
         } else {
             System.out.println("No rows were deleted.");
         }
@@ -55,38 +56,20 @@ public class dbconnector {
     }
 }
     
-    public void updateData(String sql){
-        try {
+    public void updatedata(String sql){
+       try {
             PreparedStatement ps = connection.prepareStatement(sql);
             int rowsUpdated = ps.executeUpdate();
             if(rowsUpdated > 0) {
-                System.out.println("Data updated successfully!");
+                JOptionPane.showMessageDialog(null, "Successfully Updated!");
             }else{
-                System.out.println("Data update failed!");
+                JOptionPane.showMessageDialog(null, "Successfully Failed!");
             }
         } catch (SQLException e) {
-            System.out.println("Connection error:"+e);
+            JOptionPane.showMessageDialog(null, "Connection Error" +e);
         }
     }
-    
-    public void deleteDataacc(int id, String table) {
-    try {
-       
-        PreparedStatement ps = connection.prepareStatement("DELETE FROM tbl_account WHERE cus_id = ?");
-        ps.setInt(1, id);
-        int rowsDeleted = ps.executeUpdate();
-        if (rowsDeleted > 0) {
-            System.out.println(rowsDeleted + " rows were deleted.");
-        } else {
-            System.out.println("No rows were deleted.");
-        }
-        ps.close();
-        connection.close();
-    } catch (SQLException e) {
-        System.out.println("Error deleting data: " + e);
-    }
-}
-    
+      
 }
 
 

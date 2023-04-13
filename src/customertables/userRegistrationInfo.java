@@ -7,7 +7,7 @@ package customertables;
 
 
 import config.dbconnector;
-import dashinternal.customerpage;
+import dashinternal.userpage;
 import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -17,12 +17,12 @@ import restoframes.dashboard;
  *
  * @author ellan
  */
-public class customerinfo extends javax.swing.JFrame {
+public class userRegistrationInfo extends javax.swing.JFrame {
 
     /**
      * Creates new form customerinfo
      */
-    public customerinfo() {
+    public userRegistrationInfo() {
         initComponents();
     }
     
@@ -30,13 +30,24 @@ public class customerinfo extends javax.swing.JFrame {
         this.dispose();
         dashboard dash = new dashboard();
         dash.setVisible(true);
-        customerpage cp = new customerpage();
+        userpage cp = new userpage();
         dash.dashboardpane.add(cp).setVisible(true);
    }
     
         Color enter  = new Color(136,8,8);
         Color exit = new Color(74,4,4);
         Color plate = new Color(100,4,4);
+        
+        int validateregister(){
+            int result;
+            if(userfname.getText().isEmpty() || userlname.getText().isEmpty() || useremail.getText().isEmpty() || username.getText().isEmpty() || userpassword.getText().isEmpty() ){
+                JOptionPane.showMessageDialog(null, "Required Inputs!");
+                result = 0;
+            }else{
+                result = 1;
+            }
+                return result;
+        }
         
         public String action;
 
@@ -54,27 +65,24 @@ public class customerinfo extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         close = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        accountid = new javax.swing.JTextField();
-        customerlname = new javax.swing.JTextField();
-        customercountry = new javax.swing.JComboBox<>();
-        jLabel12 = new javax.swing.JLabel();
+        userlname = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         confirm = new javax.swing.JPanel();
         done = new javax.swing.JLabel();
-        customerid = new javax.swing.JTextField();
-        customercontact = new javax.swing.JTextField();
-        customerfname = new javax.swing.JTextField();
+        userid = new javax.swing.JTextField();
+        userfname = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        customergender = new javax.swing.JComboBox<>();
-        jLabel15 = new javax.swing.JLabel();
-        customerbirthdate = new com.toedter.calendar.JDateChooser();
         jLabel17 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        username = new javax.swing.JTextField();
+        userpassword = new javax.swing.JTextField();
+        useremail = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(100, 4, 4));
@@ -126,42 +134,21 @@ public class customerinfo extends javax.swing.JFrame {
 
         jPanel1.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, -1, 30));
 
-        accountid.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        accountid.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4)));
-        accountid.setEnabled(false);
-        jPanel1.add(accountid, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 270, 30));
-
-        customerlname.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        customerlname.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4)));
-        jPanel1.add(customerlname, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 270, 30));
-
-        customercountry.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        customercountry.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "The Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo, Democratic Republic of the", "Congo, Republic of the", "Costa Rica", "Côte d’Ivoire", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor (Timor-Leste)", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "The Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea, North", "Korea, South", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia, Federated States of", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar (Burma)", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia", "Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "Spain", "Sri Lanka", "Sudan", "Sudan, South", "Suriname", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe" }));
-        jPanel1.add(customercountry, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, 270, 30));
-
-        jLabel12.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(240, 240, 240));
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel12.setText("Birthdate");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, 30));
+        userlname.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        userlname.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4)));
+        jPanel1.add(userlname, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 270, 30));
 
         jLabel13.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(240, 240, 240));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel13.setText("Gender");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, 30));
+        jLabel13.setText("Email");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, 30));
 
         jLabel10.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(240, 240, 240));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel10.setText("Last Name");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 70, 30));
-
-        jLabel14.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(240, 240, 240));
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel14.setText("Account ID");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 80, 30));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 70, 30));
 
         jLabel9.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(240, 240, 240));
@@ -190,56 +177,57 @@ public class customerinfo extends javax.swing.JFrame {
         done.setText("Azzaz");
         confirm.add(done, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 60, 20));
 
-        jPanel1.add(confirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 430, 120, 40));
+        jPanel1.add(confirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, 120, 40));
 
-        customerid.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        customerid.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4)));
-        customerid.setEnabled(false);
-        jPanel1.add(customerid, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 270, 30));
+        userid.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        userid.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4)));
+        userid.setEnabled(false);
+        jPanel1.add(userid, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 270, 30));
 
-        customercontact.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        customercontact.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4)));
-        jPanel1.add(customercontact, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, 270, 30));
-
-        customerfname.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        customerfname.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4)));
-        jPanel1.add(customerfname, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 270, 30));
+        userfname.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        userfname.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4)));
+        jPanel1.add(userfname, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 270, 30));
 
         jLabel16.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(240, 240, 240));
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel16.setText("Fisrt Name");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 70, 30));
-
-        customergender.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        customergender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
-        customergender.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4)));
-        jPanel1.add(customergender, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 270, 30));
-
-        jLabel15.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(240, 240, 240));
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel15.setText("Contact");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, 30));
-
-        customerbirthdate.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        jPanel1.add(customerbirthdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, 270, 30));
+        jLabel16.setText("First Name");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 70, 30));
 
         jLabel17.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(240, 240, 240));
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel17.setText("Country");
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, 30));
+        jLabel17.setText("Password");
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, 30));
 
         jLabel11.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(240, 240, 240));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel11.setText("Customer ID");
+        jLabel11.setText("User ID");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 90, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 490));
+        username.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        username.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4)));
+        jPanel1.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 270, 30));
+
+        userpassword.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        userpassword.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4)));
+        jPanel1.add(userpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, 270, 30));
+
+        useremail.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        useremail.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4), new java.awt.Color(74, 4, 4)));
+        jPanel1.add(useremail, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 270, 30));
+
+        jLabel18.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel18.setText("Username");
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 500));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void minimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseClicked
@@ -267,29 +255,38 @@ public class customerinfo extends javax.swing.JFrame {
     }//GEN-LAST:event_closeMouseExited
 
     private void confirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmMouseClicked
+        
         if(action.equals("Add")){
+            
+        int check = validateregister(); 
+        if(check == 1){
             dbconnector dbc = new dbconnector();
-            int result = dbc.insertData("INSERT INTO tbl_customer (cus_fname, cus_lname , cus_gender, cus_contact, cus_birthdate, cus_address) "
-                + "VALUES ('"+customerfname.getText()+"', '"+customerlname.getText()+"','"+customergender.getSelectedItem()+"','"+customercontact.getText()+"',"
-                + "'"+customerbirthdate.getToolTipText()+"','"+customercountry.getSelectedItem()+"')");
-            if(result == 1){
-                JOptionPane.showMessageDialog(null, "Success! Very Nice.");
-                close();
+           int result = dbc.insertdata("INSERT INTO tbl_user(user_fname, user_lname, user_email, user_username, user_password, user_status) "
+                   + "VALUES ('"+userfname.getText()+"', '"+userlname.getText()+"', '"+useremail.getText()+"'"
+                           + ", '"+username.getText()+"', '"+userpassword.getText()+"', 'Pending' )");
+           if(result==1){
+                  JOptionPane.showMessageDialog(null, "Successfully Saved!");
+               close();
             }else{
-                JOptionPane.showMessageDialog(null, "Adding Data Failed");
-            }
-        }else if(action.equals("Edit")){
-            dbconnector dbc = new dbconnector();
-            dbc.updateData("UPDATE tbl_customer SET c_fname = '"+customerfname.getText()+"', "
-                + "c_lname = '"+customerlname.getText()+"', cus_gender = '"+customergender.getSelectedItem()+"',"
-                + " cus_contact = '"+customercontact.getText()+"', cus_birthdate = '"+customerbirthdate.getToolTipText()+"', "
-                + "c_address = '"+customercountry.getSelectedItem()+"'"
-                + "WHERE cus_id = '"+customerid.getText()+"', acc_id = '"+accountid.getText()+'"');
-            close();
-        }else{
-            JOptionPane.showMessageDialog(null, "No Actions Performed!");
-            close();
-        }
+                  JOptionPane.showMessageDialog(null, "Successfully Failed!");
+              }
+            }else{
+                  JOptionPane.showMessageDialog(null, "Required Inputs!");
+              }
+        
+       }else if(action.equals("Edit")){
+           dbconnector dbc = new dbconnector();
+            dbc.updatedata("UPDATE tbl_user SET user_fname = '"+userfname.getText()+"'"
+                    + ", user_lname = '"+userlname.getText()+"', user_email = '"+useremail.getText()+"'"
+                            + ", user_username = '"+username.getText()+"', '"+userpassword.getText()+ "WHERE cus_id = '"+userid.getText()+"'   ");
+               close();
+            }else{
+                  JOptionPane.showMessageDialog(null, "No Actions Performed!");
+                close();
+       }
+            
+    
+    
     }//GEN-LAST:event_confirmMouseClicked
 
     private void confirmMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmMouseEntered
@@ -317,48 +314,45 @@ public class customerinfo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(customerinfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(userRegistrationInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(customerinfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(userRegistrationInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(customerinfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(userRegistrationInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(customerinfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(userRegistrationInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new customerinfo().setVisible(true);
+                new userRegistrationInfo().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JTextField accountid;
     private javax.swing.JPanel close;
     public javax.swing.JPanel confirm;
-    public com.toedter.calendar.JDateChooser customerbirthdate;
-    public javax.swing.JTextField customercontact;
-    public javax.swing.JComboBox<String> customercountry;
-    public javax.swing.JTextField customerfname;
-    public javax.swing.JComboBox<String> customergender;
-    public javax.swing.JTextField customerid;
-    public javax.swing.JTextField customerlname;
     public javax.swing.JLabel done;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel minimize;
+    public javax.swing.JTextField useremail;
+    public javax.swing.JTextField userfname;
+    public javax.swing.JTextField userid;
+    public javax.swing.JTextField userlname;
+    public javax.swing.JTextField username;
+    public javax.swing.JTextField userpassword;
     // End of variables declaration//GEN-END:variables
 }

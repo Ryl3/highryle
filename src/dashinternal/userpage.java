@@ -1,7 +1,7 @@
 package dashinternal;
 
+import customertables.*;
 import config.dbconnector;
-import customertables.customerInfo;
 import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,12 +16,12 @@ import net.proteanit.sql.DbUtils;
  *
  * @author ellan
  */
-public class customerpage extends javax.swing.JInternalFrame {
+public class userpage extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form customerpage
      */
-    public customerpage() {
+    public userpage() {
         initComponents();
         
         displaydata();
@@ -36,8 +36,8 @@ public class customerpage extends javax.swing.JInternalFrame {
          public void displaydata(){
              try{
                  dbconnector dbc = new dbconnector();
-                 ResultSet rs = dbc.getdata("SELECT * FROM tbl_customer");
-                 customertable.setModel(DbUtils.resultSetToTableModel(rs));
+                 ResultSet rs = dbc.getdata("SELECT * FROM tbl_user");
+                 usertable.setModel(DbUtils.resultSetToTableModel(rs));
              }catch(SQLException e){
                  System.out.println("Errors" +e.getMessage());
              }
@@ -65,7 +65,7 @@ public class customerpage extends javax.swing.JInternalFrame {
         find = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        customertable = new javax.swing.JTable();
+        usertable = new javax.swing.JTable();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -213,7 +213,7 @@ public class customerpage extends javax.swing.JInternalFrame {
 
         jPanel1.add(find, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 0, 80, 30));
 
-        jScrollPane1.setViewportView(customertable);
+        jScrollPane1.setViewportView(usertable);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 750, 380));
 
@@ -277,45 +277,46 @@ public class customerpage extends javax.swing.JInternalFrame {
     private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
         JFrame mainFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
         mainFrame.dispose();
-        customerInfo ci = new customerInfo();
-        ci.setVisible(true);
-        ci.action = "Add";
-        ci.done.setText("Save");
+        userRegistrationInfo uri = new userRegistrationInfo();
+        uri.setVisible(true);
+        uri.action = "Add";
+        uri.done.setText("Save");
     }//GEN-LAST:event_addMouseClicked
 
     private void editMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseClicked
-        int rowindex = customertable.getSelectedRow();
+        int rowindex = usertable.getSelectedRow();
        if(rowindex<0){
            JOptionPane.showMessageDialog(null, "Please Select an Item!");
        }else{
-            TableModel model = customertable.getModel();
-            customerInfo ci = new customerInfo();
-                ci.customerid.setText(""+model.getValueAt(rowindex, 0));
-                ci.customerfname.setText(""+model.getValueAt(rowindex, 1));
-                ci.customerlname.setText(""+model.getValueAt(rowindex, 2));
-                ci.customergender.setSelectedItem(""+model.getValueAt(rowindex, 3).toString());
-                ci.customercountry.setSelectedItem(""+model.getValueAt(rowindex, 4).toString());
-                ci.setVisible(true);
-                ci.action = "Edit";
-                ci.done.setText("Update");
+            TableModel model = usertable.getModel();
+            userRegistrationInfo uri = new userRegistrationInfo();
+                uri.userid.setText(""+model.getValueAt(rowindex, 0));
+                uri.userfname.setText(""+model.getValueAt(rowindex, 1));
+                uri.userlname.setText(""+model.getValueAt(rowindex, 2));
+                uri.useremail.setText(""+model.getValueAt(rowindex, 3));
+                uri.username.setText(""+model.getValueAt(rowindex, 4));
+                uri.userpassword.setText(""+model.getValueAt(rowindex, 5));
+                uri.setVisible(true);
+                uri.action = "Edit";
+                uri.done.setText("Update");
                 JFrame mainFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
                 mainFrame.dispose();
        }
     }//GEN-LAST:event_editMouseClicked
 
     private void deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseClicked
-        int rowindex = customertable.getSelectedRow();
+        int rowindex = usertable.getSelectedRow();
         if(rowindex < 0){
             JOptionPane.showMessageDialog(null, "Please select data first from the table.");
         }else{
-            TableModel model = customertable.getModel();
+            TableModel model = usertable.getModel();
             Object value = model.getValueAt(rowindex, 0);
             String id = value.toString();
             int a = JOptionPane.showConfirmDialog(null, "Are you sure to Delete ID: " +id);
                 if(a == JOptionPane.YES_OPTION){
                     dbconnector dbc = new dbconnector(); 
-                    int c_id = Integer.parseInt(id);
-                    dbc.deletedata(c_id, "tbl_customer", "cus_id");
+                    int u_id = Integer.parseInt(id);
+                    dbc.deletedata(u_id, "tbl_user", "user_id");
                     displaydata();
                 }
         }
@@ -332,7 +333,6 @@ public class customerpage extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel add;
-    private javax.swing.JTable customertable;
     private javax.swing.JPanel delete;
     private javax.swing.JPanel edit;
     private javax.swing.JPanel find;
@@ -347,5 +347,6 @@ public class customerpage extends javax.swing.JInternalFrame {
     private javax.swing.JPanel load;
     private javax.swing.JPanel other;
     private javax.swing.JTextField searchbar;
+    private javax.swing.JTable usertable;
     // End of variables declaration//GEN-END:variables
 }
