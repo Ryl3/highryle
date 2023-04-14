@@ -63,6 +63,7 @@ public class registrationform extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(74, 4, 4));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240), 3));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         reglname.setBackground(new java.awt.Color(74, 4, 4));
@@ -110,7 +111,7 @@ public class registrationform extends javax.swing.JFrame {
         jLabel1.setText("Rumehistro");
         signup.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 190, 20));
 
-        jPanel1.add(signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, 190, 40));
+        jPanel1.add(signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 380, 190, 40));
 
         jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 50)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(240, 240, 240));
@@ -118,7 +119,7 @@ public class registrationform extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
 
         minimize.setBackground(new java.awt.Color(74, 4, 4));
-        minimize.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240)));
+        minimize.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240), 2));
         minimize.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 minimizeMouseClicked(evt);
@@ -141,7 +142,7 @@ public class registrationform extends javax.swing.JFrame {
         jPanel1.add(minimize, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, -1, 29));
 
         close.setBackground(new java.awt.Color(74, 4, 4));
-        close.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240)));
+        close.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240), 2));
         close.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 closeMouseClicked(evt);

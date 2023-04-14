@@ -59,6 +59,7 @@ public class dashboard extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         nav.setBackground(new java.awt.Color(100, 4, 4));
+        nav.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240), 3));
         nav.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         account.setBackground(new java.awt.Color(74, 4, 4));
@@ -179,6 +180,7 @@ public class dashboard extends javax.swing.JFrame {
         getContentPane().add(nav, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 440));
 
         header.setBackground(new java.awt.Color(136, 8, 8));
+        header.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240), 3));
         header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         minimize.setBackground(new java.awt.Color(136, 8, 8));
@@ -230,16 +232,17 @@ public class dashboard extends javax.swing.JFrame {
         getContentPane().add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 750, 30));
 
         dashboardpane.setBackground(new java.awt.Color(0, 204, 0));
+        dashboardpane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240), 3));
 
         javax.swing.GroupLayout dashboardpaneLayout = new javax.swing.GroupLayout(dashboardpane);
         dashboardpane.setLayout(dashboardpaneLayout);
         dashboardpaneLayout.setHorizontalGroup(
             dashboardpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 750, Short.MAX_VALUE)
+            .addGap(0, 744, Short.MAX_VALUE)
         );
         dashboardpaneLayout.setVerticalGroup(
             dashboardpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 410, Short.MAX_VALUE)
+            .addGap(0, 404, Short.MAX_VALUE)
         );
 
         getContentPane().add(dashboardpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 750, 410));

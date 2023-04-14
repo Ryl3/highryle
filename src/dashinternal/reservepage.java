@@ -66,13 +66,14 @@ public class reservepage extends javax.swing.JInternalFrame {
         searchbar = new javax.swing.JTextField();
         find = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         reservetable = new javax.swing.JTable();
-        jLabel8 = new javax.swing.JLabel();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(100, 4, 4));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240), 3));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         load.setBackground(new java.awt.Color(74, 4, 4));
@@ -96,7 +97,7 @@ public class reservepage extends javax.swing.JInternalFrame {
         jLabel4.setText("Load");
         load.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 60, 30));
 
-        jPanel1.add(load, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 0, 80, 30));
+        jPanel1.add(load, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 80, 30));
 
         add.setBackground(new java.awt.Color(74, 4, 4));
         add.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240), 2));
@@ -119,7 +120,7 @@ public class reservepage extends javax.swing.JInternalFrame {
         jLabel5.setText("Add");
         add.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 40, 30));
 
-        jPanel1.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 80, 30));
+        jPanel1.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 80, 30));
 
         edit.setBackground(new java.awt.Color(74, 4, 4));
         edit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240), 2));
@@ -142,7 +143,7 @@ public class reservepage extends javax.swing.JInternalFrame {
         jLabel6.setText("Edit");
         edit.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 40, 30));
 
-        jPanel1.add(edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 80, 30));
+        jPanel1.add(edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 80, 30));
 
         delete.setBackground(new java.awt.Color(74, 4, 4));
         delete.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240), 2));
@@ -165,10 +166,10 @@ public class reservepage extends javax.swing.JInternalFrame {
         jLabel7.setText("Delete");
         delete.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 60, 30));
 
-        jPanel1.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, 80, 30));
+        jPanel1.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 80, 30));
 
         searchbar.setFont(new java.awt.Font("Trebuchet MS", 1, 15)); // NOI18N
-        jPanel1.add(searchbar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 30, 200, 30));
+        jPanel1.add(searchbar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 70, 200, 30));
 
         find.setBackground(new java.awt.Color(74, 4, 4));
         find.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240), 2));
@@ -191,17 +192,18 @@ public class reservepage extends javax.swing.JInternalFrame {
         jLabel10.setText("Find");
         find.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 40, 30));
 
-        jPanel1.add(find, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 30, 80, 30));
-
-        jScrollPane1.setViewportView(reservetable);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 750, 350));
+        jPanel1.add(find, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 70, 80, 30));
 
         jLabel8.setFont(new java.awt.Font("Trebuchet MS", 1, 48)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(240, 240, 240));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel8.setText("Reserve");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 180, 60));
+        jLabel8.setText("Reserve Page");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 310, 70));
+
+        reservetable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jScrollPane1.setViewportView(reservetable);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 710, 280));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 410));
 

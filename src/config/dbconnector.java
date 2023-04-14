@@ -9,7 +9,7 @@ public class dbconnector {
     
     public dbconnector(){
         try{
-            connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/maindb", "root", "");
+            connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/restotracker", "root", "");
             }catch(SQLException e){
                 System.err.println("Cannot connect to database: " + e.getMessage());
             }

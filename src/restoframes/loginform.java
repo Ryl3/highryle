@@ -42,7 +42,6 @@ public class loginform extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         email = new javax.swing.JTextField();
         password = new javax.swing.JPasswordField();
-        jLabel3 = new javax.swing.JLabel();
         login = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -52,6 +51,7 @@ public class loginform extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         close = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -64,19 +64,13 @@ public class loginform extends javax.swing.JFrame {
         email.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
         email.setForeground(new java.awt.Color(240, 240, 240));
         email.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(240, 240, 240), 2, true), "Email", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 14), new java.awt.Color(240, 240, 240))); // NOI18N
-        jPanel1.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 370, -1));
+        jPanel1.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 370, -1));
 
         password.setBackground(new java.awt.Color(74, 4, 4));
         password.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
         password.setForeground(new java.awt.Color(240, 240, 240));
         password.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(240, 240, 240), 2, true), "Password", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 14), new java.awt.Color(240, 240, 240))); // NOI18N
-        jPanel1.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 370, 50));
-
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(240, 240, 240));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Escorpiyo");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 420, 50));
+        jPanel1.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 370, 50));
 
         login.setBackground(new java.awt.Color(74, 4, 4));
         login.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240)));
@@ -97,15 +91,15 @@ public class loginform extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(240, 240, 240));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Login");
-        login.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 370, 20));
+        login.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 130, 20));
 
-        jPanel1.add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 370, 40));
+        jPanel1.add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, 130, 40));
 
         jLabel11.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(240, 240, 240));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("or");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 370, 30));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, 110, 40));
 
         createaccount.setBackground(new java.awt.Color(74, 4, 4));
         createaccount.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240)));
@@ -126,9 +120,9 @@ public class loginform extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(240, 240, 240));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Create Account");
-        createaccount.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 370, 20));
+        createaccount.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 130, 20));
 
-        jPanel1.add(createaccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 370, 40));
+        jPanel1.add(createaccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 130, 40));
 
         minimize.setBackground(new java.awt.Color(74, 4, 4));
         minimize.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240)));
@@ -175,6 +169,12 @@ public class loginform extends javax.swing.JFrame {
         close.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 30));
 
         jPanel1.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, -1, 30));
+
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Escorpiyo");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 420, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 480));
 
