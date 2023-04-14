@@ -3,12 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ellan/OneDrive/Documents/NetBeansProjects/highryle/src/dashinternal/customerpage.java</file>
-            <file>file:/C:/Users/ellan/OneDrive/Documents/NetBeansProjects/highryle/src/config/dbconnector.java</file>
-            <file>file:/C:/Users/ellan/OneDrive/Documents/NetBeansProjects/highryle/src/customertables/customerinfo.java</file>
-            <file>file:/C:/Users/ellan/OneDrive/Documents/NetBeansProjects/highryle/src/customerpageinternal/internal/accountspage.java</file>
-            <file>file:/C:/Users/ellan/OneDrive/Documents/NetBeansProjects/highryle/src/customerpageinternal/internal/accountsinfo.java</file>
-            <file>file:/C:/Users/ellan/OneDrive/Documents/NetBeansProjects/highryle/src/customerpageinternal/customerotherbutton.java</file>
+            <file>file:/C:/Users/SCC%20COMPLAB/Documents/NetBeansProjects/highryle/src/dashinternal/reservepage.java</file>
+            <file>file:/C:/Users/SCC%20COMPLAB/Documents/NetBeansProjects/highryle/src/config/dbconnector.java</file>
+            <file>file:/C:/Users/SCC%20COMPLAB/Documents/NetBeansProjects/highryle/src/customertables/customerInfo.java</file>
+            <file>file:/C:/Users/SCC%20COMPLAB/Documents/NetBeansProjects/highryle/src/customertables/reserveInfo.java</file>
+            <file>file:/C:/Users/SCC%20COMPLAB/Documents/NetBeansProjects/highryle/src/dashinternal/userpage.java</file>
+            <file>file:/C:/Users/SCC%20COMPLAB/Documents/NetBeansProjects/highryle/src/dashinternal/customerpage.java</file>
+            <file>file:/C:/Users/SCC%20COMPLAB/Documents/NetBeansProjects/highryle/src/customertables/userRegistrationInfo.java</file>
         </group>
     </open-files>
 </project-private>
