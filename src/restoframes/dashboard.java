@@ -9,6 +9,7 @@ package restoframes;
 import dashinternal.accountpage;
 import dashinternal.customerpage;
 import dashinternal.dashboardpage;
+import dashinternal.reservepage;
 import dashinternal.userpage;
 
 import java.awt.Color;
@@ -44,6 +45,8 @@ public class dashboard extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         user = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
+        reserve = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
         header = new javax.swing.JPanel();
         minimize = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -79,7 +82,7 @@ public class dashboard extends javax.swing.JFrame {
         jLabel1.setText("Account");
         account.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 90, 20));
 
-        nav.add(account, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 90, 40));
+        nav.add(account, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 90, 40));
 
         dashboard.setBackground(new java.awt.Color(74, 4, 4));
         dashboard.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240)));
@@ -149,6 +152,29 @@ public class dashboard extends javax.swing.JFrame {
         user.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 90, 20));
 
         nav.add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 90, 40));
+
+        reserve.setBackground(new java.awt.Color(74, 4, 4));
+        reserve.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240), new java.awt.Color(240, 240, 240)));
+        reserve.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                reserveMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                reserveMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                reserveMouseExited(evt);
+            }
+        });
+        reserve.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setFont(new java.awt.Font("Trebuchet MS", 1, 15)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Reservation");
+        reserve.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 90, 20));
+
+        nav.add(reserve, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 90, 40));
 
         getContentPane().add(nav, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 440));
 
@@ -301,6 +327,19 @@ public class dashboard extends javax.swing.JFrame {
         user.setBackground(exit);
     }//GEN-LAST:event_userMouseExited
 
+    private void reserveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reserveMouseClicked
+        reservepage rp = new reservepage();
+        dashboardpane.add(rp).setVisible(true);
+    }//GEN-LAST:event_reserveMouseClicked
+
+    private void reserveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reserveMouseEntered
+        reserve.setBackground(enter);
+    }//GEN-LAST:event_reserveMouseEntered
+
+    private void reserveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reserveMouseExited
+        reserve.setBackground(exit);
+    }//GEN-LAST:event_reserveMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -349,8 +388,10 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel minimize;
     private javax.swing.JPanel nav;
+    private javax.swing.JPanel reserve;
     private javax.swing.JPanel user;
     // End of variables declaration//GEN-END:variables
 }

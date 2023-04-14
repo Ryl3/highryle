@@ -12,6 +12,7 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.TableModel;
 import net.proteanit.sql.DbUtils;
 
+
 /**
  *
  * @author ellan
@@ -38,6 +39,7 @@ public class userpage extends javax.swing.JInternalFrame {
                  dbconnector dbc = new dbconnector();
                  ResultSet rs = dbc.getdata("SELECT * FROM tbl_user");
                  usertable.setModel(DbUtils.resultSetToTableModel(rs));
+                 rs.close();
              }catch(SQLException e){
                  System.out.println("Errors" +e.getMessage());
              }
