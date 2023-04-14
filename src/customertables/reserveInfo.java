@@ -153,7 +153,7 @@ public class reserveInfo extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(240, 240, 240));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel9.setText("Customer Info");
+        jLabel9.setText("Reserve Info");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 250, 30));
 
         confirm.setBackground(new java.awt.Color(74, 4, 4));

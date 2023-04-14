@@ -17,12 +17,12 @@ import restoframes.dashboard;
  *
  * @author ellan
  */
-public class userRegistrationInfo extends javax.swing.JFrame {
+public class userInfo extends javax.swing.JFrame {
 
     /**
      * Creates new form customerinfo
      */
-    public userRegistrationInfo() {
+    public userInfo() {
         initComponents();
     }
     
@@ -153,7 +153,7 @@ public class userRegistrationInfo extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(240, 240, 240));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel9.setText("Customer Info");
+        jLabel9.setText("User Info");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 250, 30));
 
         confirm.setBackground(new java.awt.Color(74, 4, 4));
@@ -224,7 +224,7 @@ public class userRegistrationInfo extends javax.swing.JFrame {
         jLabel18.setText("Username");
         jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 500));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 450));
 
         pack();
         setLocationRelativeTo(null);
@@ -261,9 +261,9 @@ public class userRegistrationInfo extends javax.swing.JFrame {
         int check = validateregister(); 
         if(check == 1){
             dbconnector dbc = new dbconnector();
-           int result = dbc.insertdata("INSERT INTO tbl_user(user_fname, user_lname, user_email, user_username, user_password, user_status) "
+           int result = dbc.insertdata("INSERT INTO tbl_user(user_fname, user_lname, user_email, user_username, user_password, ) "
                    + "VALUES ('"+userfname.getText()+"', '"+userlname.getText()+"', '"+useremail.getText()+"'"
-                           + ", '"+username.getText()+"', '"+userpassword.getText()+"', 'Pending' )");
+                           + ", '"+username.getText()+"', '"+userpassword.getText()+")");
            if(result==1){
                   JOptionPane.showMessageDialog(null, "Successfully Saved!");
                close();
@@ -285,9 +285,7 @@ public class userRegistrationInfo extends javax.swing.JFrame {
                   JOptionPane.showMessageDialog(null, "No Actions Performed!");
                 close();
        }
-            
-    
-    
+        
     }//GEN-LAST:event_confirmMouseClicked
 
     private void confirmMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmMouseEntered
@@ -315,21 +313,23 @@ public class userRegistrationInfo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(userRegistrationInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(userInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(userRegistrationInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(userInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(userRegistrationInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(userInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(userRegistrationInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(userInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new userRegistrationInfo().setVisible(true);
+                new userInfo().setVisible(true);
             }
         });
     }

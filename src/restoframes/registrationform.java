@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -199,9 +199,9 @@ public class registrationform extends javax.swing.JFrame {
         int check = validateregister(); 
         if(check == 1){
         dbconnector dbc = new dbconnector();
-          int result = dbc.insertdata("INSERT INTO tbl_user (user_fname, user_lname, user_email, user_username, user_password, user_status)"
+          int result = dbc.insertdata("INSERT INTO tbl_user (user_fname, user_lname, user_email, user_username, user_password)"
                   + " VALUES ('"+regfname.getText()+"', '"+reglname.getText()+"', '"+regemail.getText()+"', '"+regusername.getText()+"',"
-                          + " '"+regpassword.getText()+"', 'Pending')");                                                                              
+                          + " '"+regpassword.getText()+"')");                                                                              
                if(result==1){
                   JOptionPane.showMessageDialog(null, "Successfully Registered!");
                   loginform lg = new loginform();

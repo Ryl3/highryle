@@ -60,13 +60,12 @@ public class customerpage extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         delete = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        other = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
         searchbar = new javax.swing.JTextField();
         find = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         customertable = new javax.swing.JTable();
+        jLabel8 = new javax.swing.JLabel();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -94,7 +93,7 @@ public class customerpage extends javax.swing.JInternalFrame {
         jLabel4.setText("Load");
         load.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 60, 30));
 
-        jPanel1.add(load, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 30));
+        jPanel1.add(load, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 0, 80, 30));
 
         add.setBackground(new java.awt.Color(74, 4, 4));
         add.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240), 2));
@@ -117,7 +116,7 @@ public class customerpage extends javax.swing.JInternalFrame {
         jLabel5.setText("Add");
         add.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 40, 30));
 
-        jPanel1.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 80, 30));
+        jPanel1.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 80, 30));
 
         edit.setBackground(new java.awt.Color(74, 4, 4));
         edit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240), 2));
@@ -140,7 +139,7 @@ public class customerpage extends javax.swing.JInternalFrame {
         jLabel6.setText("Edit");
         edit.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 40, 30));
 
-        jPanel1.add(edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 80, 30));
+        jPanel1.add(edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 80, 30));
 
         delete.setBackground(new java.awt.Color(74, 4, 4));
         delete.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240), 2));
@@ -163,33 +162,10 @@ public class customerpage extends javax.swing.JInternalFrame {
         jLabel7.setText("Delete");
         delete.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 60, 30));
 
-        jPanel1.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 80, 30));
-
-        other.setBackground(new java.awt.Color(74, 4, 4));
-        other.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240), 2));
-        other.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                otherMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                otherMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                otherMouseExited(evt);
-            }
-        });
-        other.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel9.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(240, 240, 240));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("Other");
-        other.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 40, 30));
-
-        jPanel1.add(other, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 0, 80, 30));
+        jPanel1.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, 80, 30));
 
         searchbar.setFont(new java.awt.Font("Trebuchet MS", 1, 15)); // NOI18N
-        jPanel1.add(searchbar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, 200, 30));
+        jPanel1.add(searchbar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 30, 200, 30));
 
         find.setBackground(new java.awt.Color(74, 4, 4));
         find.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240), 2));
@@ -212,13 +188,19 @@ public class customerpage extends javax.swing.JInternalFrame {
         jLabel10.setText("Find");
         find.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 40, 30));
 
-        jPanel1.add(find, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 0, 80, 30));
+        jPanel1.add(find, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 30, 80, 30));
 
         jScrollPane1.setViewportView(customertable);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 750, 380));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 750, 350));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 430));
+        jLabel8.setFont(new java.awt.Font("Trebuchet MS", 1, 45)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel8.setText("Customer");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 210, 60));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 410));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -262,14 +244,6 @@ public class customerpage extends javax.swing.JInternalFrame {
     private void findMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_findMouseExited
         find.setBackground(exit);
     }//GEN-LAST:event_findMouseExited
-
-    private void otherMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_otherMouseEntered
-        other.setBackground(enter);
-    }//GEN-LAST:event_otherMouseEntered
-
-    private void otherMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_otherMouseExited
-        other.setBackground(exit);
-    }//GEN-LAST:event_otherMouseExited
 
     private void loadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadMouseClicked
         displaydata();
@@ -326,10 +300,6 @@ public class customerpage extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_findMouseClicked
 
-    private void otherMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_otherMouseClicked
-
-    }//GEN-LAST:event_otherMouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel add;
@@ -342,11 +312,10 @@ public class customerpage extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel load;
-    private javax.swing.JPanel other;
     private javax.swing.JTextField searchbar;
     // End of variables declaration//GEN-END:variables
 }
