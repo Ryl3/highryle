@@ -5,7 +5,10 @@
  */
 package crudInfo;
 
+import config.dbconnector;
 import java.awt.Color;
+import javax.swing.JOptionPane;
+import restoframes.dashboard;
 
 /**
  *
@@ -19,11 +22,31 @@ public class userInfo extends javax.swing.JFrame {
     public userInfo() {
         initComponents();
     }
+    public void close(){
+        this.dispose();
+        dashboard dash = new dashboard();
+        dash.setVisible(true);
+        customerInfo cp = new customerInfo();
+        dash.dashboardpane.add(cp).setVisible(true);
+   }
+    
+    int validateregister(){
+            int result;
+            if(fname.getText().isEmpty() || lname.getText().isEmpty() || email.getText().isEmpty() || 
+                    username.getText().isEmpty() || password.getText().isEmpty() ){
+                JOptionPane.showMessageDialog(null, "Required Inputs!");
+                result = 0;
+            }else{
+                result = 1;
+            }
+                return result;
+        }
 
     
         Color o  = new Color(255,51,51);
         Color ten = new Color(255,102,102);
         
+        public String action;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,12 +68,13 @@ public class userInfo extends javax.swing.JFrame {
         lname = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         add = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
+        Azzaz = new javax.swing.JLabel();
         password = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         email = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 102, 102));
@@ -112,10 +136,10 @@ public class userInfo extends javax.swing.JFrame {
         });
         add.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel10.setFont(new java.awt.Font("Verdana", 1, 15)); // NOI18N
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Azzaz");
-        add.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 140, 30));
+        Azzaz.setFont(new java.awt.Font("Verdana", 1, 15)); // NOI18N
+        Azzaz.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Azzaz.setText("Azzaz");
+        add.add(Azzaz, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 140, 30));
 
         jPanel1.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 280, 140, 50));
 
@@ -134,10 +158,39 @@ public class userInfo extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 350));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
-
+        if(action.equals("Add")){
+           
+           int check = validateregister(); 
+        if(check == 1){
+            
+            dbconnector dbc = new dbconnector();
+           int result = dbc.insertdata("INSERT INTO tbl_user(us_fname, us_username,us_email, us_username,us_password) "
+                   + "VALUES ('"+fname.getText()+"', '"+lname.getText()+"', '"+email.getText()+"', '"+username.getText()+"',"
+                           + " '"+password.getText()+"' )");
+           if(result==1){
+                    JOptionPane.showMessageDialog(null, "Successfully Saved!");
+               close();
+           }else{
+                    JOptionPane.showMessageDialog(null, "Successfully Failed!");
+                }
+            }else{
+                    JOptionPane.showMessageDialog(null, "Required Inputs!");
+                }
+           
+       }else if(action.equals("Edit")){
+           dbconnector dbc = new dbconnector();
+            dbc.updatedata("UPDATE tbl_user SET us_fname = '"+fname.getText()+"', us_lname =  '"+lname.getText()+"',"
+                    + " us_email =  '"+email.getText()+"', us_username =  '"+username.getText()+"',"
+                            + " us_password =  '"+password.getText()+"',    ");
+               close();
+            }else{
+                  JOptionPane.showMessageDialog(null, "No Actions Performed!");
+                close();
+       }
     }//GEN-LAST:event_addMouseClicked
 
     private void addMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseEntered
@@ -191,11 +244,11 @@ public class userInfo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JLabel Azzaz;
     private javax.swing.JPanel add;
-    private javax.swing.JTextField email;
-    private javax.swing.JTextField fname;
+    public javax.swing.JTextField email;
+    public javax.swing.JTextField fname;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -203,9 +256,9 @@ public class userInfo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField lname;
-    private javax.swing.JTextField password;
-    private javax.swing.JTextField userid;
-    private javax.swing.JTextField username;
+    public javax.swing.JTextField lname;
+    public javax.swing.JTextField password;
+    public javax.swing.JTextField userid;
+    public javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
 }

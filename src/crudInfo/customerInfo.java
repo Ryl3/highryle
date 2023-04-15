@@ -5,7 +5,10 @@
  */
 package crudInfo;
 
+import config.dbconnector;
 import java.awt.Color;
+import javax.swing.JOptionPane;
+import restoframes.dashboard;
 
 /**
  *
@@ -19,10 +22,33 @@ public class customerInfo extends javax.swing.JFrame {
     public customerInfo() {
         initComponents();
     }
+    
+    public void close(){
+        this.dispose();
+        dashboard dash = new dashboard();
+        dash.setVisible(true);
+        customerInfo cp = new customerInfo();
+        dash.dashboardpane.add(cp).setVisible(true);
+   }
+    
+    int validateregister(){
+            int result;
+            if(fname.getText().isEmpty() || lname.getText().isEmpty() || contact.getText().isEmpty() || 
+                    gender.getSelectedItem().equals(null) || status.getSelectedItem().equals(null) || 
+                    address.getText().isEmpty() ){
+                JOptionPane.showMessageDialog(null, "Required Inputs!");
+                result = 0;
+            }else{
+                result = 1;
+            }
+                return result;
+        }
 
     
         Color o  = new Color(255,51,51);
         Color ten = new Color(255,102,102);
+        
+        public String action;
         
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,14 +71,15 @@ public class customerInfo extends javax.swing.JFrame {
         fname = new javax.swing.JTextField();
         lname = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        add = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
+        done = new javax.swing.JPanel();
+        Azzaz = new javax.swing.JLabel();
         gender = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         contact = new javax.swing.JTextField();
         status = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 102, 102));
@@ -103,27 +130,27 @@ public class customerInfo extends javax.swing.JFrame {
         jLabel9.setText("First Name");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, 30));
 
-        add.setBackground(new java.awt.Color(255, 102, 102));
-        add.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        add.addMouseListener(new java.awt.event.MouseAdapter() {
+        done.setBackground(new java.awt.Color(255, 102, 102));
+        done.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        done.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                addMouseClicked(evt);
+                doneMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                addMouseEntered(evt);
+                doneMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                addMouseExited(evt);
+                doneMouseExited(evt);
             }
         });
-        add.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        done.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel10.setFont(new java.awt.Font("Verdana", 1, 15)); // NOI18N
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Azzaz");
-        add.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 140, 30));
+        Azzaz.setFont(new java.awt.Font("Verdana", 1, 15)); // NOI18N
+        Azzaz.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Azzaz.setText("Azzaz");
+        done.add(Azzaz, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 140, 30));
 
-        jPanel1.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 280, 140, 50));
+        jPanel1.add(done, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 280, 140, 50));
 
         gender.setFont(new java.awt.Font("Verdana", 1, 15)); // NOI18N
         gender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Gay ", "Lesbian", "Degamo" }));
@@ -145,20 +172,51 @@ public class customerInfo extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 350));
 
+        getAccessibleContext().setAccessibleDescription("");
+
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
+    private void doneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_doneMouseClicked
+        if(action.equals("Add")){
+           
+           int check = validateregister(); 
+        if(check == 1){
+            
+            dbconnector dbc = new dbconnector();
+           int result = dbc.insertdata("INSERT INTO tbl_customer(c_fname, c_lname,c_contact, c_gender,c_status, c_address) "
+                   + "VALUES ('"+fname.getText()+"', '"+lname.getText()+"', '"+contact.getText()+"', '"+gender.getSelectedItem()+"',"
+                           + " '"+status.getSelectedItem()+"', '"+address.getText()+"' )");
+           if(result==1){
+                    JOptionPane.showMessageDialog(null, "Successfully Saved!");
+               close();
+           }else{
+                    JOptionPane.showMessageDialog(null, "Successfully Failed!");
+                }
+            }else{
+                    JOptionPane.showMessageDialog(null, "Required Inputs!");
+                }
+           
+       }else if(action.equals("Edit")){
+           dbconnector dbc = new dbconnector();
+            dbc.updatedata("UPDATE tbl_customer SET c_fname = '"+fname.getText()+"', c_lname =  '"+lname.getText()+"',"
+                    + " c_mobile =  '"+contact.getText()+"', c_gender =  '"+gender.getSelectedItem()+"',"
+                            + " c_status =  '"+status.getSelectedItem()+"', c_address =  '"+address.getText()+"',    ");
+               close();
+            }else{
+                  JOptionPane.showMessageDialog(null, "No Actions Performed!");
+                close();
+       }
+    }//GEN-LAST:event_doneMouseClicked
 
-    }//GEN-LAST:event_addMouseClicked
+    private void doneMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_doneMouseEntered
+        done.setBackground(o);
+    }//GEN-LAST:event_doneMouseEntered
 
-    private void addMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseEntered
-        add.setBackground(o);
-    }//GEN-LAST:event_addMouseEntered
-
-    private void addMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseExited
-        add.setBackground(ten);
-    }//GEN-LAST:event_addMouseExited
+    private void doneMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_doneMouseExited
+        done.setBackground(ten);
+    }//GEN-LAST:event_doneMouseExited
 
     /**
      * @param args the command line arguments
@@ -203,14 +261,14 @@ public class customerInfo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel add;
-    private javax.swing.JTextField address;
-    private javax.swing.JTextField contact;
-    private javax.swing.JTextField cusid;
-    private javax.swing.JTextField fname;
-    private javax.swing.JComboBox<String> gender;
+    public javax.swing.JLabel Azzaz;
+    public javax.swing.JTextField address;
+    public javax.swing.JTextField contact;
+    public javax.swing.JTextField cusid;
+    public javax.swing.JPanel done;
+    public javax.swing.JTextField fname;
+    public javax.swing.JComboBox<String> gender;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -218,8 +276,8 @@ public class customerInfo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField lname;
-    private javax.swing.JComboBox<String> status;
+    public javax.swing.JPanel jPanel1;
+    public javax.swing.JTextField lname;
+    public javax.swing.JComboBox<String> status;
     // End of variables declaration//GEN-END:variables
 }

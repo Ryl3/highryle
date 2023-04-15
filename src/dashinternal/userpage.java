@@ -1,7 +1,7 @@
 package dashinternal;
 
-import customertables.*;
 import config.dbconnector;
+import crudInfo.userInfo;
 import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -258,7 +258,7 @@ public class userpage extends javax.swing.JInternalFrame {
         userInfo uri = new userInfo();
         uri.setVisible(true);
         uri.action = "Add";
-        uri.done.setText("Save");
+        uri.Azzaz.setText("Save");
     }//GEN-LAST:event_addMouseClicked
 
     private void editMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseClicked
@@ -269,14 +269,14 @@ public class userpage extends javax.swing.JInternalFrame {
             TableModel model = usertable.getModel();
             userInfo uri = new userInfo();
                 uri.userid.setText(""+model.getValueAt(rowindex, 0));
-                uri.userfname.setText(""+model.getValueAt(rowindex, 1));
-                uri.userlname.setText(""+model.getValueAt(rowindex, 2));
-                uri.useremail.setText(""+model.getValueAt(rowindex, 3));
+                uri.fname.setText(""+model.getValueAt(rowindex, 1));
+                uri.lname.setText(""+model.getValueAt(rowindex, 2));
+                uri.email.setText(""+model.getValueAt(rowindex, 3));
                 uri.username.setText(""+model.getValueAt(rowindex, 4));
-                uri.userpassword.setText(""+model.getValueAt(rowindex, 5));
+                uri.password.setText(""+model.getValueAt(rowindex, 5));
                 uri.setVisible(true);
                 uri.action = "Edit";
-                uri.done.setText("Update");
+                uri.Azzaz.setText("Update");
                 JFrame mainFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
                 mainFrame.dispose();
        }
@@ -294,7 +294,7 @@ public class userpage extends javax.swing.JInternalFrame {
                 if(a == JOptionPane.YES_OPTION){
                     dbconnector dbc = new dbconnector(); 
                     int u_id = Integer.parseInt(id);
-                    dbc.deletedata(u_id, "tbl_user", "user_id");
+                    dbc.deletedata(u_id, "tbl_user", "us_id");
                     displaydata();
                 }
         }

@@ -1,7 +1,7 @@
 package dashinternal;
 
-import customertables.*;
 import config.dbconnector;
+import crudInfo.reservationInfo;
 import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -257,10 +257,10 @@ public class reservepage extends javax.swing.JInternalFrame {
     private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
         JFrame mainFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
         mainFrame.dispose();
-        reserveInfo ri = new reserveInfo();
+        reservationInfo ri = new reservationInfo();
         ri.setVisible(true);
         ri.action = "Add";
-        ri.done.setText("Save");
+        ri.Azzaz.setText("Save");
     }//GEN-LAST:event_addMouseClicked
 
     private void editMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseClicked
@@ -269,16 +269,16 @@ public class reservepage extends javax.swing.JInternalFrame {
            JOptionPane.showMessageDialog(null, "Please Select an Item!");
        }else{
             TableModel model = reservetable.getModel();
-            reserveInfo ri = new reserveInfo();
-                ri.reserveid.setText(""+model.getValueAt(rowindex, 0));
+            reservationInfo ri = new reservationInfo();
+                ri.resid.setText(""+model.getValueAt(rowindex, 0));
                 ri.userid.setText(""+model.getValueAt(rowindex, 1));
-                ri.customerid.setText(""+model.getValueAt(rowindex, 2));
-                ri.contact.setText(""+model.getValueAt(rowindex, 3));
-                ri.bookstatus.setSelectedItem(""+model.getValueAt(rowindex, 4));
-                ri.userstatus.setSelectedItem(""+model.getValueAt(rowindex, 5));
+                ri.cusid.setText(""+model.getValueAt(rowindex, 2));
+                ri.status.setText(""+model.getValueAt(rowindex, 3));
+                ri.type.setSelectedItem(""+model.getValueAt(rowindex, 4));
+                ri.desc.setText(""+model.getValueAt(rowindex, 5));
                 ri.setVisible(true);
                 ri.action = "Edit";
-                ri.done.setText("Update");
+                ri.Azzaz.setText("Update");
                 JFrame mainFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
                 mainFrame.dispose();
        }

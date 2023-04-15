@@ -1,7 +1,7 @@
 package dashinternal;
 
 import config.dbconnector;
-import customertables.customerInfo;
+import crudInfo.customerInfo;
 import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -257,7 +257,7 @@ public class customerpage extends javax.swing.JInternalFrame {
         customerInfo ci = new customerInfo();
         ci.setVisible(true);
         ci.action = "Add";
-        ci.done.setText("Save");
+        ci.Azzaz.setText("Save");
     }//GEN-LAST:event_addMouseClicked
 
     private void editMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseClicked
@@ -267,14 +267,16 @@ public class customerpage extends javax.swing.JInternalFrame {
        }else{
             TableModel model = customertable.getModel();
             customerInfo ci = new customerInfo();
-                ci.customerid.setText(""+model.getValueAt(rowindex, 0));
-                ci.customerfname.setText(""+model.getValueAt(rowindex, 1));
-                ci.customerlname.setText(""+model.getValueAt(rowindex, 2));
-                ci.customergender.setSelectedItem(""+model.getValueAt(rowindex, 3).toString());
-                ci.customercountry.setSelectedItem(""+model.getValueAt(rowindex, 4).toString());
+                ci.cusid.setText(""+model.getValueAt(rowindex, 0));
+                ci.fname.setText(""+model.getValueAt(rowindex, 1));
+                ci.lname.setText(""+model.getValueAt(rowindex, 2));
+                ci.contact.setText(""+model.getValueAt(rowindex, 3).toString());
+                ci.gender.setSelectedItem(""+model.getValueAt(rowindex, 4).toString());
+                ci.status.setSelectedItem(""+model.getValueAt(rowindex, 5).toString());
+                ci.lname.setText(""+model.getValueAt(rowindex, 6));
                 ci.setVisible(true);
                 ci.action = "Edit";
-                ci.done.setText("Update");
+                ci.Azzaz.setText("Update");
                 JFrame mainFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
                 mainFrame.dispose();
        }
@@ -292,7 +294,7 @@ public class customerpage extends javax.swing.JInternalFrame {
                 if(a == JOptionPane.YES_OPTION){
                     dbconnector dbc = new dbconnector(); 
                     int c_id = Integer.parseInt(id);
-                    dbc.deletedata(c_id, "tbl_customer", "cus_id");
+                    dbc.deletedata(c_id, "tbl_customer", "c_id");
                     displaydata();
                 }
         }

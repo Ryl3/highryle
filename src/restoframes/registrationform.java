@@ -29,7 +29,8 @@ public class registrationform extends javax.swing.JFrame {
       
         int validateregister(){
             int result;
-            if(regfname.getText().isEmpty() || reglname.getText().isEmpty() || regemail.getText().isEmpty() || regusername.getText().isEmpty() || regpassword.getText().isEmpty() ){
+            if(regfname.getText().isEmpty() || reglname.getText().isEmpty() || regemail.getText().isEmpty() || 
+                    regusername.getText().isEmpty() || regpassword.getText().isEmpty() ){
                 JOptionPane.showMessageDialog(null, "Required Inputs!");
                 result = 0;
             }else{
