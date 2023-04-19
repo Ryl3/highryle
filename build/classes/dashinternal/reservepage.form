@@ -300,11 +300,11 @@
               <Color blue="f0" green="f0" red="f0" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="2"/>
-            <Property name="text" type="java.lang.String" value="Reserve Page"/>
+            <Property name="text" type="java.lang.String" value="Reservation Page"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="20" y="0" width="310" height="70"/>
+              <AbsoluteConstraints x="20" y="0" width="390" height="70"/>
             </Constraint>
           </Constraints>
         </Component>

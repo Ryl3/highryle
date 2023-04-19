@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package restoframes;
 
 import config.dbconnector;
@@ -143,7 +139,7 @@ public class loginform extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(240, 240, 240));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("—");
-        minimize.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 30));
+        minimize.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 30, 10));
 
         jPanel1.add(minimize, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, -1, 30));
 
@@ -166,7 +162,7 @@ public class loginform extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(240, 240, 240));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("X");
-        close.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 30));
+        close.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 30, 10));
 
         jPanel1.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, -1, 30));
 
@@ -189,9 +185,9 @@ public class loginform extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please Input!");
         } else {
             try {
-                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/maindb", "root", "");
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/restotracker", "root", "");
                 dbconnector dbc = new dbconnector();
-                ResultSet rs = dbc.getdata("SELECT * FROM tbl_user WHERE user_email= '" + email.getText() + "'AND user_password='" + password.getText() + "'");
+                ResultSet rs = dbc.getdata("SELECT * FROM tbl_user WHERE us_email= '" + email.getText() + "'AND us_password='" + password.getText() + "'");
                 if (rs.next()) {
                     JOptionPane.showMessageDialog(rootPane, "Successfully Login!!");
 

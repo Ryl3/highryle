@@ -37,9 +37,10 @@ public class reservepage extends javax.swing.JInternalFrame {
          public void displaydata(){
              try{
                  dbconnector dbc = new dbconnector();
-                 ResultSet rs = dbc.getdata("SELECT  res_id, tbl_user.user_id, tbl_customer.cus_id, res_contact, res_status, res_userstatus "
-                         + "FROM tbl_reserve LEFT JOIN tbl_user ON tbl_reserve.user_id = tbl_user.user_id "
-                         + "LEFT JOIN tbl_customer ON tbl_reserve.cus_id = tbl_customer.cus_id");
+                 ResultSet rs = dbc.getdata("SELECT res_id tbl_user.us_id tbl_customer.c_id tbl_user.us_fname tbl_user.us_lname tbl_user.us_email "
+                         + "tbl_customer.c_contact tbl_customer.c_address FROM `tbl_reservation` "
+                         + "LEFT JOIN tbl_user ON tbl_reservation.us_id = tbl_user.us_id "
+                         + "LEFT JOIN tbl_customer ON tbl_reservation.c_id = tbl_customer.c_id");
                  reservetable.setModel(DbUtils.resultSetToTableModel(rs));
                  rs.close();
              }catch(SQLException e){
@@ -197,8 +198,8 @@ public class reservepage extends javax.swing.JInternalFrame {
         jLabel8.setFont(new java.awt.Font("Trebuchet MS", 1, 48)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(240, 240, 240));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel8.setText("Reserve Page");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 310, 70));
+        jLabel8.setText("Reservation Page");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 390, 70));
 
         reservetable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         jScrollPane1.setViewportView(reservetable);

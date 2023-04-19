@@ -6,7 +6,9 @@
 package crudInfo;
 
 import config.dbconnector;
+import dashinternal.reservepage;
 import java.awt.Color;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import restoframes.dashboard;
 
@@ -27,7 +29,7 @@ public class reservationInfo extends javax.swing.JFrame {
         this.dispose();
         dashboard dash = new dashboard();
         dash.setVisible(true);
-        customerInfo cp = new customerInfo();
+        reservepage cp = new reservepage();
         dash.dashboardpane.add(cp).setVisible(true);
    }
     
@@ -75,6 +77,10 @@ public class reservationInfo extends javax.swing.JFrame {
         desc = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         status = new javax.swing.JTextField();
+        close = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        minimize = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -167,6 +173,50 @@ public class reservationInfo extends javax.swing.JFrame {
         status.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel1.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 270, 30));
 
+        close.setBackground(new java.awt.Color(255, 102, 102));
+        close.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        close.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                closeMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                closeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                closeMouseExited(evt);
+            }
+        });
+        close.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("X");
+        close.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 30, 10));
+
+        jPanel1.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 10, -1, 30));
+
+        minimize.setBackground(new java.awt.Color(255, 102, 102));
+        minimize.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        minimize.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                minimizeMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                minimizeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                minimizeMouseExited(evt);
+            }
+        });
+        minimize.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("—");
+        minimize.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 30, 10));
+
+        jPanel1.add(minimize, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, -1, 30));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 350));
 
         pack();
@@ -179,9 +229,7 @@ public class reservationInfo extends javax.swing.JFrame {
         int check = validateregister(); 
         if(check == 1){
             dbconnector dbc = new dbconnector();
-           int result = dbc.insertdata("INSERT INTO tbl_reservation(res_id, cl_id, us_id, c_id, res_status, res_type, res_payrate ) "
-                   + "VALUES ('"+resid.getText()+"', '"+userid.getText()+"', '"+cusid.getText()+"'"
-                           + ", '"+status.getText()+"', '"+type.getSelectedItem()+"','"+desc.getText()+"', '"+payrate.getText()+"')");
+           int result = dbc.insertdata("INSERT INTO tbl_reservation(res_id, us_id, c_id) VALUES ('"+resid.getText()+"', '"+userid.getText()+"', '"+cusid.getText()+"')");
            if(result==1){
                   JOptionPane.showMessageDialog(null, "Successfully Saved!");
                close();
@@ -194,8 +242,7 @@ public class reservationInfo extends javax.swing.JFrame {
         
        }else if(action.equals("Edit")){
            dbconnector dbc = new dbconnector();
-            dbc.updatedata("UPDATE tbl_reservation SET , res_status = '"+status.getText()+"', res_type = '"  +type.getSelectedItem()+ "' ,res_desc =  '"+desc.getText()+"',"
-                                    + "res_payrate = '"+payrate.getText()+"'WHERE res_id = '"+resid.getText()+"', us_id = '"+userid.getText()+"',"
+            dbc.updatedata("UPDATE tbl_reservation SET WHERE res_id = '"+resid.getText()+"', us_id = '"+userid.getText()+"',"
                                             + " c_id = '"+cusid.getText()+"',   ");
                close();
             }else{
@@ -211,6 +258,32 @@ public class reservationInfo extends javax.swing.JFrame {
     private void addMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseExited
         add.setBackground(ten);
     }//GEN-LAST:event_addMouseExited
+
+    private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
+        reservepage cp = new reservepage();
+        this.dispose();
+        cp.setVisible(true);
+    }//GEN-LAST:event_closeMouseClicked
+
+    private void closeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseEntered
+        close.setBackground(o);
+    }//GEN-LAST:event_closeMouseEntered
+
+    private void closeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseExited
+        close.setBackground(ten);
+    }//GEN-LAST:event_closeMouseExited
+
+    private void minimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseClicked
+        setState(JFrame.ICONIFIED);
+    }//GEN-LAST:event_minimizeMouseClicked
+
+    private void minimizeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseEntered
+        minimize.setBackground(o);
+    }//GEN-LAST:event_minimizeMouseEntered
+
+    private void minimizeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseExited
+        minimize.setBackground(ten);
+    }//GEN-LAST:event_minimizeMouseExited
 
     /**
      * @param args the command line arguments
@@ -253,17 +326,21 @@ public class reservationInfo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel Azzaz;
     private javax.swing.JPanel add;
+    private javax.swing.JPanel close;
     public javax.swing.JTextField cusid;
     public javax.swing.JTextField desc;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel minimize;
     public javax.swing.JTextField payrate;
     public javax.swing.JTextField resid;
     public javax.swing.JTextField status;

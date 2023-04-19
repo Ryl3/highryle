@@ -6,7 +6,9 @@
 package crudInfo;
 
 import config.dbconnector;
+import dashinternal.customerpage;
 import java.awt.Color;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import restoframes.dashboard;
 
@@ -22,34 +24,33 @@ public class customerInfo extends javax.swing.JFrame {
     public customerInfo() {
         initComponents();
     }
-    
-    public void close(){
+
+    public void close() {
         this.dispose();
         dashboard dash = new dashboard();
         dash.setVisible(true);
-        customerInfo cp = new customerInfo();
+        customerpage cp = new customerpage();
         dash.dashboardpane.add(cp).setVisible(true);
-   }
-    
-    int validateregister(){
-            int result;
-            if(fname.getText().isEmpty() || lname.getText().isEmpty() || contact.getText().isEmpty() || 
-                    gender.getSelectedItem().equals(null) || status.getSelectedItem().equals(null) || 
-                    address.getText().isEmpty() ){
-                JOptionPane.showMessageDialog(null, "Required Inputs!");
-                result = 0;
-            }else{
-                result = 1;
-            }
-                return result;
-        }
+    }
 
-    
-        Color o  = new Color(255,51,51);
-        Color ten = new Color(255,102,102);
-        
-        public String action;
-        
+    int validateregister() {
+        int result;
+        if (fname.getText().isEmpty() || lname.getText().isEmpty() || contact.getText().isEmpty()
+                || gender.getSelectedItem().equals(null) || status.getSelectedItem().equals(null)
+                || address.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Required Inputs!");
+            result = 0;
+        } else {
+            result = 1;
+        }
+        return result;
+    }
+
+    Color o = new Color(255, 51, 51);
+    Color ten = new Color(255, 102, 102);
+
+    public String action;
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -77,6 +78,10 @@ public class customerInfo extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         contact = new javax.swing.JTextField();
         status = new javax.swing.JComboBox<>();
+        close = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        minimize = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -116,6 +121,7 @@ public class customerInfo extends javax.swing.JFrame {
 
         cusid.setFont(new java.awt.Font("Verdana", 1, 15)); // NOI18N
         cusid.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        cusid.setEnabled(false);
         jPanel1.add(cusid, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 270, 30));
 
         fname.setFont(new java.awt.Font("Verdana", 1, 15)); // NOI18N
@@ -170,6 +176,50 @@ public class customerInfo extends javax.swing.JFrame {
         status.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel1.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 270, 30));
 
+        close.setBackground(new java.awt.Color(255, 102, 102));
+        close.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        close.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                closeMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                closeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                closeMouseExited(evt);
+            }
+        });
+        close.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("X");
+        close.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 30, 10));
+
+        jPanel1.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 10, -1, 30));
+
+        minimize.setBackground(new java.awt.Color(255, 102, 102));
+        minimize.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        minimize.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                minimizeMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                minimizeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                minimizeMouseExited(evt);
+            }
+        });
+        minimize.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("—");
+        minimize.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 30, 10));
+
+        jPanel1.add(minimize, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, -1, 30));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 350));
 
         getAccessibleContext().setAccessibleDescription("");
@@ -179,35 +229,39 @@ public class customerInfo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void doneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_doneMouseClicked
-        if(action.equals("Add")){
-           
-           int check = validateregister(); 
-        if(check == 1){
-            
-            dbconnector dbc = new dbconnector();
-           int result = dbc.insertdata("INSERT INTO tbl_customer(c_fname, c_lname,c_contact, c_gender,c_status, c_address) "
-                   + "VALUES ('"+fname.getText()+"', '"+lname.getText()+"', '"+contact.getText()+"', '"+gender.getSelectedItem()+"',"
-                           + " '"+status.getSelectedItem()+"', '"+address.getText()+"' )");
-           if(result==1){
+        if (action.equals("Add")) {
+
+            int check = validateregister();
+            if (check == 1) {
+
+                dbconnector dbc = new dbconnector();
+                int result = dbc.insertdata("INSERT INTO tbl_customer(c_fname, c_lname,c_contact, c_gender,c_status, c_address) "
+                        + "VALUES ('" + fname.getText() + "', '" + lname.getText() + "', '" + contact.getText() + "', '" + gender.getSelectedItem() + "',"
+                        + " '" + status.getSelectedItem() + "', '" + address.getText() + "' )");
+                if (result == 1) {
                     JOptionPane.showMessageDialog(null, "Successfully Saved!");
-               close();
-           }else{
+                    close();
+                } else {
                     JOptionPane.showMessageDialog(null, "Successfully Failed!");
                 }
-            }else{
-                    JOptionPane.showMessageDialog(null, "Required Inputs!");
-                }
-           
-       }else if(action.equals("Edit")){
-           dbconnector dbc = new dbconnector();
-            dbc.updatedata("UPDATE tbl_customer SET c_fname = '"+fname.getText()+"', c_lname =  '"+lname.getText()+"',"
-                    + " c_mobile =  '"+contact.getText()+"', c_gender =  '"+gender.getSelectedItem()+"',"
-                            + " c_status =  '"+status.getSelectedItem()+"', c_address =  '"+address.getText()+"',    ");
-               close();
-            }else{
-                  JOptionPane.showMessageDialog(null, "No Actions Performed!");
+            } else {
+
+            }
+
+        } else if (action.equals("Edit")) {
+            dbconnector dbc = new dbconnector();
+            System.out.println("");
+            dbc.updatedata("UPDATE tbl_customer SET c_fname = '" + fname.getText() + "',"
+                    + " c_lname = '" + lname.getText() + "',"
+                    + " c_contact = '" + contact.getText() + "',"
+                    + " c_gender = '" + gender.getSelectedItem() + "',"
+                    + " c_status = '" + status.getSelectedItem() + "',"
+                    + " c_address = '"+address.getText()+"' WHERE c_id = '" + cusid.getText() + "'");
                 close();
-       }
+        } else {
+            JOptionPane.showMessageDialog(null, "No Actions Performed!");
+            close();
+        }
     }//GEN-LAST:event_doneMouseClicked
 
     private void doneMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_doneMouseEntered
@@ -217,6 +271,32 @@ public class customerInfo extends javax.swing.JFrame {
     private void doneMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_doneMouseExited
         done.setBackground(ten);
     }//GEN-LAST:event_doneMouseExited
+
+    private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
+        customerpage cp = new customerpage();
+        this.dispose();
+        cp.setVisible(true);
+    }//GEN-LAST:event_closeMouseClicked
+
+    private void closeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseEntered
+        close.setBackground(o);
+    }//GEN-LAST:event_closeMouseEntered
+
+    private void closeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseExited
+        close.setBackground(ten);
+    }//GEN-LAST:event_closeMouseExited
+
+    private void minimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseClicked
+        setState(JFrame.ICONIFIED);
+    }//GEN-LAST:event_minimizeMouseClicked
+
+    private void minimizeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseEntered
+        minimize.setBackground(o);
+    }//GEN-LAST:event_minimizeMouseEntered
+
+    private void minimizeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseExited
+        minimize.setBackground(ten);
+    }//GEN-LAST:event_minimizeMouseExited
 
     /**
      * @param args the command line arguments
@@ -263,21 +343,25 @@ public class customerInfo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel Azzaz;
     public javax.swing.JTextField address;
+    private javax.swing.JPanel close;
     public javax.swing.JTextField contact;
     public javax.swing.JTextField cusid;
     public javax.swing.JPanel done;
     public javax.swing.JTextField fname;
     public javax.swing.JComboBox<String> gender;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     public javax.swing.JPanel jPanel1;
     public javax.swing.JTextField lname;
+    private javax.swing.JPanel minimize;
     public javax.swing.JComboBox<String> status;
     // End of variables declaration//GEN-END:variables
 }

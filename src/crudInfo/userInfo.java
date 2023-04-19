@@ -6,7 +6,9 @@
 package crudInfo;
 
 import config.dbconnector;
+import dashinternal.userpage;
 import java.awt.Color;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import restoframes.dashboard;
 
@@ -26,8 +28,8 @@ public class userInfo extends javax.swing.JFrame {
         this.dispose();
         dashboard dash = new dashboard();
         dash.setVisible(true);
-        customerInfo cp = new customerInfo();
-        dash.dashboardpane.add(cp).setVisible(true);
+        userpage up = new userpage();
+        dash.dashboardpane.add(up).setVisible(true);
    }
     
     int validateregister(){
@@ -72,6 +74,10 @@ public class userInfo extends javax.swing.JFrame {
         password = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         email = new javax.swing.JTextField();
+        minimize = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        close = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -155,6 +161,50 @@ public class userInfo extends javax.swing.JFrame {
         email.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel1.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 270, 30));
 
+        minimize.setBackground(new java.awt.Color(255, 102, 102));
+        minimize.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        minimize.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                minimizeMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                minimizeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                minimizeMouseExited(evt);
+            }
+        });
+        minimize.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("—");
+        minimize.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 30, 10));
+
+        jPanel1.add(minimize, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, -1, 30));
+
+        close.setBackground(new java.awt.Color(255, 102, 102));
+        close.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        close.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                closeMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                closeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                closeMouseExited(evt);
+            }
+        });
+        close.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("X");
+        close.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 30, 10));
+
+        jPanel1.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 10, -1, 30));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 350));
 
         pack();
@@ -185,7 +235,7 @@ public class userInfo extends javax.swing.JFrame {
            dbconnector dbc = new dbconnector();
             dbc.updatedata("UPDATE tbl_user SET us_fname = '"+fname.getText()+"', us_lname =  '"+lname.getText()+"',"
                     + " us_email =  '"+email.getText()+"', us_username =  '"+username.getText()+"',"
-                            + " us_password =  '"+password.getText()+"',    ");
+                            + " us_password =  '"+password.getText()+"' WHERE us_id = '" + userid.getText() + "'  ");
                close();
             }else{
                   JOptionPane.showMessageDialog(null, "No Actions Performed!");
@@ -200,6 +250,32 @@ public class userInfo extends javax.swing.JFrame {
     private void addMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseExited
         add.setBackground(ten);
     }//GEN-LAST:event_addMouseExited
+
+    private void minimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseClicked
+        setState(JFrame.ICONIFIED);
+    }//GEN-LAST:event_minimizeMouseClicked
+
+    private void minimizeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseEntered
+        minimize.setBackground(o);
+    }//GEN-LAST:event_minimizeMouseEntered
+
+    private void minimizeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseExited
+        minimize.setBackground(ten);
+    }//GEN-LAST:event_minimizeMouseExited
+
+    private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
+        userpage cp = new userpage();
+        this.dispose();
+        cp.setVisible(true);
+    }//GEN-LAST:event_closeMouseClicked
+
+    private void closeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseEntered
+        close.setBackground(o);
+    }//GEN-LAST:event_closeMouseEntered
+
+    private void closeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseExited
+        close.setBackground(ten);
+    }//GEN-LAST:event_closeMouseExited
 
     /**
      * @param args the command line arguments
@@ -246,17 +322,21 @@ public class userInfo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel Azzaz;
     private javax.swing.JPanel add;
+    private javax.swing.JPanel close;
     public javax.swing.JTextField email;
     public javax.swing.JTextField fname;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JTextField lname;
+    private javax.swing.JPanel minimize;
     public javax.swing.JTextField password;
     public javax.swing.JTextField userid;
     public javax.swing.JTextField username;

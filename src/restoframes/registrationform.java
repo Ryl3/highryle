@@ -1,8 +1,4 @@
-    /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package restoframes;
 
 import config.dbconnector;
@@ -10,15 +6,10 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author ellan
- */
+
 public class registrationform extends javax.swing.JFrame {
 
-    /**
-     * Creates new form registrationform
-     */
+    
     public registrationform() {
         initComponents();
     }
@@ -201,7 +192,7 @@ public class registrationform extends javax.swing.JFrame {
         int check = validateregister(); 
         if(check == 1){
         dbconnector dbc = new dbconnector();
-          int result = dbc.insertdata("INSERT INTO tbl_user (user_fname, user_lname, user_email, user_username, user_password)"
+          int result = dbc.insertdata("INSERT INTO tbl_user (us_fname, us_lname, us_email, us_username, us_password)"
                   + " VALUES ('"+regfname.getText()+"', '"+reglname.getText()+"', '"+regemail.getText()+"', '"+regusername.getText()+"',"
                           + " '"+regpassword.getText()+"')");                                                                              
                if(result==1){
